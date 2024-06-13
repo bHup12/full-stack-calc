@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div>
+        <form id="registrationForm">
+            <h2>Register</h2>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="button" onclick="validateForm()">Register</button>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            
+            if (name.length <= 6) {
+                alert("Name must be greater than 6 characters.");
+                return false; // Prevent form submission
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false; // Prevent form submission
+            }
+
+            // Email validation using a regular expression
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address.");
+                return false; // Prevent form submission
+            }
+            
+            // Proceed with form submission
+            document.getElementById("registrationForm").submit();
+        }
+    </script>
+</body>
+</html>
